@@ -1,0 +1,389 @@
+@charset "utf-8";
+/*
+    Author: Oshman Ansari
+    Date:5/23/21
+    CSS155 Project V3
+    filename: styles.css
+
+
+This stylesheet has been created to change the appearance of the pages
+found on my project website. Currently I'm keeping all fonts Tahoma,
+but that will change in the future.
+
+
+Learning outcomes featured in this stylesheet: 
+
+M5LO3 Use media queries to format a page differently for phones vs. PCs. (CSS, note where these are in your CSS and describe the overall impact they have on the site) 
+
+    I have a comment section for mobile styles, which uses a media query to designate when to apply what styles
+
+M5LO4 Use CSS for pull-down menus (or collapsible/expandable areas) (CSS, note where the menu is on your site and how it behaves) 
+
+    I used a navigation icon (.navlink) as a pull-down menu, and it was working for a while, but as I made other changes I have encountered some conflict that has made it inoperable, and haven't been able to reconcile it since. The nav buttons are hidden at screensizes below 480px wide, but should appear when the nav icon is tapped.
+
+M5LO5 (Optional) Demonstrate the use of flexboxes on a web page (CSS document where you use flexboxes; explain their impact on the page's layout; this can be a new page or a redo of an existing page)
+
+    I have used flex boxes to replace the grid layout of my previous page, in several places. Body, main, footer, aside, and navigation elements are now all flexboxes. The layout is minimally adjusted from their use, though it did fix the background color extension issue I was having between the main and aside elements.
+
+M5LO7 (Optional) Demonstrate use of properties of flexbox containers (CSS, document what flexbox container properties you use and their impacts, for one CSS selector using them)
+
+    Again, the body, main, footer, aside and navigation elements are flexboxes containing other elements within them that are positioned and sized with CSS.
+
+M5LO6 (Optional) Demonstrate use of properties of flexbox items (CSS, document what flexbox item properties you use and their impacts, for one CSS selector using them) 
+
+    CSS was used to change the orientation of the navigation list items from horizontal (on PCs and tablets with screen widths greater than 480px) to vertical on mobile devices (with screen widths less than 480px)
+
+M6LO7 Demonstrate how to format a table with CSS (CSS, group your table styles together and note the overall impact they have on the HTML) 
+    Table background and border colors were set with CSS, as were the border styles.
+*/
+
+/* HTML and Body Styles*/
+html {
+    height: 100%;
+}
+
+body {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: column nowrap;
+    flex-flow: column nowrap;
+    min-height: 100%;
+}
+
+main {
+    background-color: rgba(251, 226, 170, 0.5);
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: column nowrap;
+    flex-flow: column nowrap;
+    -webkit-flex: 5 1 0px;
+    flex: 5 1 0px;
+    height: 100%;
+}
+
+aside {
+    background-color: rgb(192, 192, 192);
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: column nowrap;
+    flex-flow: column nowrap;
+    min-height: 100%;
+}
+
+/* Heading Styles*/
+
+header {
+    background-color: rgb(142, 142, 142);
+    width: 100%;   
+}
+
+h1 {
+    text-align: center;
+    font: small-caps 2.5em Tahoma;
+}
+
+#abouth1 {
+    float: left;
+    width: fit-content;
+    text-align: center;
+    font: small-caps 2.5em Tahoma;
+}
+
+#h1 {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    width: fit-content;
+    height: 50px;
+}
+
+h2 {
+    clear: left;
+    text-align: center;
+    font: small-caps 1.9em Tahoma;
+    text-shadow: gray 0px 0px 10px;
+}
+
+/* Navigation Styles */
+
+.navlink, .cart {
+    display: none;
+}
+
+.navdiv {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+}
+
+.navdiv div {
+    -webkit-flex: 1 1 0px;
+    flex: 1 1 0px;
+    text-align: center;
+    background: rgba(160, 81, 45, 0.705);
+    border: 5px outset sienna;
+    padding: 3px;
+}
+
+.navdiv > div > a {
+    color: rgb(149, 201, 60);
+}
+
+
+/* List Styles */
+
+ul ol {
+    color: blueviolet
+}
+
+li.fluff {
+    color: darkorchid
+}
+
+ol > li:nth-of-type(even) {
+    font: italic 1.2em Tahoma;
+}
+
+ol > li:nth-of-type(odd) {
+    font: normal 1.2em impact;
+}
+
+/* Aside Styles */
+
+aside {
+    -webkit-flex: 1 1 0px;
+    flex: 1 1 0px;
+    overflow-y: scroll;
+}
+
+/* Paragraph Styles */
+p {
+    color: seagreen;
+}
+
+p::first-letter {
+    font-size: 125%;
+}
+
+/* Figure Styles */
+
+figcaption {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+#giggle {
+    text-align: left;
+    margin-left: 50px;
+}
+
+/* Image Styles */
+
+#sitemap {
+    display: block;
+    margin:auto;
+    width: 50%;
+    height: 40em;
+}
+
+#mobileLogo {
+    display: none;
+}
+
+header  div  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%; 
+}
+
+#left {
+    float: left;
+    width: 50px;
+    transform: 
+        rotatey(180deg)
+        rotate(70deg);
+}
+
+#right {
+    float: left;
+    width: 50px;
+    transform: rotate(70deg);
+}
+
+aside img {
+    display: block;
+    width: 64px;
+}
+
+/*Because this is a twitter screenshot, and it has the user's name in the image, I'm not sure if I need to attribute further?*/
+#laugh {
+    display: block;
+    margin: 10px auto 10px 10px;
+    width: 200px;
+    opacity: 0.8;
+}
+/*this style rule was set for forsale.html*/
+figure > a > img {
+    display: block;
+    margin: 5% auto;
+    width: 90%;
+   height: 300px;
+}
+
+/* div Styles */
+
+.column1-3 {
+    -webkit-flex: 1 1 0px;
+    flex: 1 1 0px;
+    height: 200px;
+    border: 3px solid rgb(10, 87, 87);
+    border-radius: 3% 20%;
+    text-align: center;
+    position: relative; 
+    background: radial-gradient(circle at center, rgba(255,255,255,0.5), orange);
+}
+
+.row {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    min-height: 100%;
+}
+
+.row1 {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    min-height: 100%;
+    justify-content: space-around;
+}
+
+.content {
+    -webkit-flex:1 1 auto;
+    flex: 1 1 auto;
+}
+
+.row1 img {
+    -webkit-flex:1 1 10%;
+    flex: 1 1 10%;
+}
+
+
+cite {
+    text-align: end;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+}
+#checkout {
+    text-align: center;
+    align-self: center;
+    justify-self: flex-end;
+    width: 200px;
+    margin-top: 2em;
+}
+
+
+#gallery {
+    height: 400px;
+    overflow-x: auto;
+}
+
+#gallery > img {
+    display: block;
+    max-width: 300px;
+    height: 250px;
+    float: left;
+}
+/*checkout button has no function until I learn what to do with it!*/
+#checkout {
+    background: rgba(160, 81, 45, 0.705);
+    border: 5px outset sienna;
+    color: rgb(149, 201, 60);
+    padding: 3px;
+}
+
+#about {
+    background-image: url(Images/welding3.png);
+    background-position: right;
+    background-repeat: no-repeat;
+}
+
+/* Footer Styles */
+
+footer {
+    background-color: rgb(142, 142, 142);
+    text-align: center;
+    max-height: fit-content;
+    -webkit-flex: 1 1 0px;
+    flex: 1 1 0px;
+}
+
+/* Table Styles */
+
+table {
+    width: 700px;
+    background: rgba(255,255,255,0.5);
+    border: 5px solid rgba(150,150,150,0.2);
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: 2px dotted rgba(150,150,150,0.5);
+}
+
+/* Mobile Styles 0 to 480px */
+
+@media only screen and (max-width: 480px) {
+    
+    #logo , aside , .column1-6 {
+        display: none;
+    }
+
+    #mobileLogo {
+        display: block;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .navdiv {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-flow: column nowrap;
+        flex-flow: column nowrap;
+        position: relative;
+    }
+
+    .navlink {
+        display: block;
+        position: absolute;
+        left: 5px;
+    }
+
+    .cart {
+        display: block;
+        position: absolute;
+        right: 5px;
+    }
+
+    .cart img {
+        width: 32px;
+    }
+
+    .navlink:hover + .cart { /* I want to select my nav buttons, either as .column1-6 or #nav. The setup I have entered shows that the hover function works to select a separate element (.cart), but for some reason I haven't been able to select any other elements using this syntax to apply any style rules to. Playing around with it, I found out that it won't select .cart if .cart is in a different container, but placing all my elements within the same container hasn't fixed my problem.
+        
+    An earlier version of my site worked as I wanted, but as I made other changes I lost functionality and haven't been able to figure out where the change occured */
+        outline: 5px solid green;
+        /* If I can figure out what's going on, this is the style rule I want applied to the nav buttons
+        -webkit-flex: 1 1 80%;
+        flex: 1 1 80%; */
+    }
+    
+
+}
