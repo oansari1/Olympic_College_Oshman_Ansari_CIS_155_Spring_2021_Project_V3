@@ -5,19 +5,17 @@
     <Head>
         <!--
             Author: Oshman Ansari
-            Date: 5/16/21
-            CSS155 Project V1
+            Date: 5/27/21
+            CSS155 Project V3
 
             This is the index page of my site, where visitors can navigate to
             the various other pages of my site. It's just a sitemap linking to the
             other pages of my site.
 
+            I made some adjustments for the index page to function on mobile sites.
+
             The learning outcomes featured on this site are:
             
-
-            M4LO7 Demonstrate the use of image maps, including determining x and y values (HTML) 
-            index page has been remade into a single image map. Hotspots have been placed using
-            X-Y coordinates
         -->
     <title>Ozzie's Project</title>
         <meta charset="utf-8" />
@@ -30,9 +28,21 @@
     <body style="background-color:rgb(142, 142, 142)">
         <header>
             <div>
-                <img src="Images/logo.png" alt="logo">
+                <img src="Images/logo.png" alt="logo" id="logo" />
+                <img src="Images/mobileLogo.png" alt="logo" id="mobileLogo" />
             </div>
-        </header>    
+
+            <nav>
+                    <div class="Inavbar">
+                        <div class="column1-6" id="nav"><a href="index.html">Home</a></div>
+                        <div class="column1-6" id="nav"><a href="about.html">About</a></div>
+                        <div class="column1-6" id="nav"><a href="contact.html">Contact</a></div>
+                        <div class="column1-6" id="nav"><a href="forsale.html">For Sale</a></div>
+                        <div class="column1-6" id="nav"><a href="portfolio.html">Portfolio</a></div>
+                        <div class="column1-6" id="nav"><a href="reviews.html">Reviews</a></div>
+                    </div>
+            </nav>
+        </header>  
             <figure id="sitemap"><img src="Images/welding1-1.png" alt="sitemap" usemap="#sitemap"/>
             <map name="sitemap">
                 <area shape="rect" coords="425,190,530,280" href="about.html" alt="About" />

@@ -1,7 +1,7 @@
 @charset "utf-8";
 /*
     Author: Oshman Ansari
-    Date:5/23/21
+    Date:5/27/21
     CSS155 Project V3
     filename: styles.css
 
@@ -19,7 +19,7 @@ M5LO3 Use media queries to format a page differently for phones vs. PCs. (CSS, n
 
 M5LO4 Use CSS for pull-down menus (or collapsible/expandable areas) (CSS, note where the menu is on your site and how it behaves) 
 
-    I used a navigation icon (.navlink) as a pull-down menu, and it was working for a while, but as I made other changes I have encountered some conflict that has made it inoperable, and haven't been able to reconcile it since. The nav buttons are hidden at screensizes below 480px wide, but should appear when the nav icon is tapped.
+    I used a navigation icon (.navlink) as a pull-down menu. It's not set up exactly as I want, but this is the only way I found to make everything functional.
 
 M5LO5 (Optional) Demonstrate the use of flexboxes on a web page (CSS document where you use flexboxes; explain their impact on the page's layout; this can be a new page or a redo of an existing page)
 
@@ -78,24 +78,26 @@ header {
 }
 
 h1 {
+    flex: 1 1 0px;
     text-align: center;
     font: small-caps 2.5em Tahoma;
+}
+
+
+
+#h1 {
+    -webkit-display: flex;
+    display: flex;
+    -webkit-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    height: 50px;
+    margin-top: 32px;
 }
 
 #abouth1 {
-    float: left;
+    display: contents;
+    margin: 5px 0px;
     width: fit-content;
-    text-align: center;
-    font: small-caps 2.5em Tahoma;
-}
-
-#h1 {
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-    position: relative;
-    width: fit-content;
-    height: 50px;
 }
 
 h2 {
@@ -107,18 +109,22 @@ h2 {
 
 /* Navigation Styles */
 
-.navlink, .cart {
+.navlink, .cart , .Inavbar {
     display: none;
 }
 
-.navdiv {
+.navdiv, .navbar {
     display: -webkit-flex;
     display: flex;
     -webkit-flex-flow: row nowrap;
     flex-flow: row nowrap;
 }
 
-.navdiv div {
+.navbar, .navbar div , .Inavbar , .Inavbar div {
+    -webkit-flex: 1 1 0px;
+    flex: 1 1 0px;
+}
+.navbar div , .Inavbar div {
     -webkit-flex: 1 1 0px;
     flex: 1 1 0px;
     text-align: center;
@@ -127,7 +133,7 @@ h2 {
     padding: 3px;
 }
 
-.navdiv > div > a {
+.navdiv  div  a , .Inavbar div a {
     color: rgb(149, 201, 60);
 }
 
@@ -200,17 +206,21 @@ header  div  img {
 }
 
 #left {
-    float: left;
-    width: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: 0px;
     transform: 
         rotatey(180deg)
         rotate(70deg);
+        width: 50px;
 }
 
 #right {
-    float: left;
-    width: 50px;
+    display: block;
+    margin-left: 0px;
+    margin-right: auto;
     transform: rotate(70deg);
+    width: 50px;
 }
 
 aside img {
@@ -244,6 +254,8 @@ figure > a > img {
     text-align: center;
     position: relative; 
     background: radial-gradient(circle at center, rgba(255,255,255,0.5), orange);
+    padding: 10px 15px;
+    margin: 5px;
 }
 
 .row {
@@ -261,16 +273,32 @@ figure > a > img {
     flex-flow: row nowrap;
     min-height: 100%;
     justify-content: space-around;
+    width: 100%;
 }
 
-.content {
-    -webkit-flex:1 1 auto;
+.row2 {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    min-height: 100%;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.product {
+    -webkit-flex:1 1 0px;
+    flex: 1 1 0px;
+}
+
+.portfolio {
     flex: 1 1 auto;
-}
 
-.row1 img {
-    -webkit-flex:1 1 10%;
-    flex: 1 1 10%;
+}
+.portfolio img {
+    display: block;
+    width: 30%;
+    margin: 10px;
 }
 
 
@@ -327,7 +355,9 @@ footer {
 /* Table Styles */
 
 table {
-    width: 700px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
     background: rgba(255,255,255,0.5);
     border: 5px solid rgba(150,150,150,0.2);
     border-collapse: collapse;
@@ -341,8 +371,12 @@ table th, table td {
 
 @media only screen and (max-width: 480px) {
     
-    #logo , aside , .column1-6 {
+    #logo , aside , .navbar , #sitemap , map {
         display: none;
+    }
+
+    h1 {
+        margin-top: 32px;
     }
 
     #mobileLogo {
@@ -350,39 +384,56 @@ table th, table td {
         width: 100%;
         margin-left: auto;
         margin-right: auto;
+        margin-bottom: 10px;
+    }
+
+    .Inavbar {
+        display: flex;
+        flex-flow: column nowrap;
+    }
+
+    .navlink, .cart {
+        display: block;
+        position: absolute;
+    }
+
+    .cart {
+        left: 5px;
+    }
+
+    .navlink {
+        right: 5px;
+    }
+
+    .navlink img , .cart img {
+        width: 32px;
     }
 
     .navdiv {
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-flow: column nowrap;
         flex-flow: column nowrap;
         position: relative;
     }
 
-    .navlink {
-        display: block;
-        position: absolute;
-        left: 5px;
+    .cart:hover + aside, .aside:hover { /* I want the cart information that's contained in the aside element to display upon hover, but can't get it to work using just CSS. I've seen tutorials that use a bit of JS to manage navigation dropdown menus, is that my only option? */
+        display: flex;
+        flex-flow: column nowrap;
     }
 
-    .cart {
-        display: block;
-        position: absolute;
-        right: 5px;
+    .navlink:hover + .navbar, .navbar:hover { /* Finally got this part working, but the only way I found to do so is if .navlink and .navbar are in the same container, with .navbar immediately following .navlink. I was going to use a separate container for the nav icons so I could set them to either side using a flex rule like space-between, but then the hover ceased to function. */
+        display: flex;
+        flex-flow: column nowrap;
     }
 
-    .cart img {
-        width: 32px;
+    div.navbar {
+        width: 75%;
+        margin-left: auto;
+        margin-right: auto;
     }
 
-    .navlink:hover + .cart { /* I want to select my nav buttons, either as .column1-6 or #nav. The setup I have entered shows that the hover function works to select a separate element (.cart), but for some reason I haven't been able to select any other elements using this syntax to apply any style rules to. Playing around with it, I found out that it won't select .cart if .cart is in a different container, but placing all my elements within the same container hasn't fixed my problem.
-        
-    An earlier version of my site worked as I wanted, but as I made other changes I lost functionality and haven't been able to figure out where the change occured */
-        outline: 5px solid green;
-        /* If I can figure out what's going on, this is the style rule I want applied to the nav buttons
-        -webkit-flex: 1 1 80%;
-        flex: 1 1 80%; */
+    .row1 {
+        -webkit-flex-flow: column nowrap;
+        flex-flow: column nowrap;
+        justify-content: center;
     }
     
 
